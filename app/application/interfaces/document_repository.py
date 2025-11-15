@@ -2,6 +2,7 @@ from abc import ABC , abstractmethod
 from typing import List , Optional
 from app.domain.entities.document import Document
 
+
 class IDocumentRepositroy(ABC):
     """Repository interface for document operations - the layer 
     between the service and the actual database"""

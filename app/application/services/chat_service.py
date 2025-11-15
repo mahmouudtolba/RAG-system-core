@@ -1,8 +1,8 @@
-from typing import List , Dict
+from typing import List, Dict
 from app.application.interfaces.llm_services import ILLMService
 from app.application.interfaces.embedding_service import IEmbeddingService
 from app.application.interfaces.vector_store import IvectorStore
-from app.domain.entities.chat_message import ChatMessage , MessageRole
+from app.domain.entities.chat_message import ChatMessage, MessageRole
 
 
 class ChatService:
@@ -11,10 +11,11 @@ class ChatService:
     Orchestrates multiple services
     """
     def __init__(
-        self , 
-        llm_service : ILLMService,
-        embedding_service : IEmbeddingService,
-        vector_store : IvectorStore):
+        self,
+        llm_service: ILLMService,
+        embedding_service: IEmbeddingService,
+        vector_store: IvectorStore
+                                    ):
         self.llm_serve = llm_service
         self.embedding_service = embedding_service
         self.vector_store = vector_store
@@ -45,10 +46,9 @@ class ChatService:
         messages.append(ChatMessage(role=MessageRole.USER , content=question))
 
         # 5. Generate response
-        response = await self.llm_serve.generate_response(messages)
+        response = await self.llm_serve.generate_response(messages ,context=context)
 
         return response
-
 
     def _build_context(self , search_results:List[Dict]) -> str:
         """Build context from search results"""

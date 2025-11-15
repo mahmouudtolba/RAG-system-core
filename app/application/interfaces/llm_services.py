@@ -12,7 +12,8 @@ class ILLMService(ABC):
     @abstractmethod
     async def generate_response(
         self ,
-        messages: List[ChatMessage]
+        messages: List[ChatMessage],
+        context:str 
     ) -> str:
         """Generate response based on context"""
         pass

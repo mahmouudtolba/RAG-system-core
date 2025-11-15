@@ -39,7 +39,7 @@ class DocumentService:
         """
         
         # 1. Extract text
-        text_content = await self._extract_text(content , filename)
+        text_content = await self._extract_text(content,filename)
 
         if not text_content.strip():
             raise InvalidDocumentFormatError("Document is empty or could not be read")
@@ -165,9 +165,6 @@ class DocumentService:
             raise InvalidDocumentFormatError(
                 f"Unsupported file format:{file_extention}"
             )
-
-        
-
 
     async def _extract_pdf_text(self , content:bytes) ->str:
         """Extract text from pdf"""
